@@ -5,11 +5,11 @@ export default  () => {
     const [restaurants,setRestaurants] = useState([]);
     const [errorMessage,setErrorMessaage] = useState('');
 
-    const searchApi= async(searchTerm) => {
+    const searchApi= async(term) => {
         try{
             const response = await yelp.get('/search',{
               params:{
-                term:searchTerm,
+                term,
                 limit:50,
                 location: 'eden prarie'
               }
