@@ -17,7 +17,7 @@ const SearchScreen = () => {
 
   
     return (
-        <View style={{flex:1}}>
+        <>
             <SearchBar term={term}
              onTermChange={setTerm} 
              onTermSubmit={searchTerm => searchApi(searchTerm)}
@@ -36,7 +36,7 @@ const SearchScreen = () => {
               restaurants={filterRestaurantByPrice('$$$')} 
               title="Bit Spender!"/>
             </ScrollView>
-        </View>
+        </>
     );
 
 };
