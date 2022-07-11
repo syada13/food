@@ -2,10 +2,10 @@ import React, {useState} from 'react';
 import {Text,View,StyleSheet,ScrollView} from 'react-native';
 import SearchBar from '../components/SearchBar';
 import useRestaurants from '../hooks/useRestaurants';
-import RestaurantsList from '../components/Restaurants';
+import RestaurantsList from '../components/RestaurantsList';
 
 
-const SearchScreen = () => {
+const SearchScreen = ({navigation}) => {
     const [term,setTerm] = useState(" ");
     const [searchApi,errorMessage,restaurants]= useRestaurants();
 
@@ -24,16 +24,19 @@ const SearchScreen = () => {
             />
             { errorMessage ? <Text>{errorMessage}</Text>: null}
             <ScrollView>
-            <RestaurantsList 
+            <RestaurantsList
               restaurants={filterRestaurantByPrice('$')} 
-              title="Cost Effective"/>
+              title="Cost Effective"
+              navigation={navigation}/>
 
             <RestaurantsList 
               restaurants={filterRestaurantByPrice('$$')} 
-              title="Bit Pricer"/>
-            <RestaurantsList 
+              title="Bit Pricer"
+              navigation={navigation}/>
+            <RestaurantsList
               restaurants={filterRestaurantByPrice('$$$')} 
-              title="Bit Spender!"/>
+              title="Bit Spender!"
+              navigation={navigation}/>
             </ScrollView>
         </>
     );
